@@ -1,0 +1,17 @@
+# Configuração de Vagrant em máquina Windows
+
+# Download do Vagrant
+# https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.msi
+
+# Após instalação, verificar no prompt se está ok e versão instalada com:
+$ vagrant version
+
+# Dentro da pasta do projeto criar inicialização:
+$ vagrant init hashicorp/precise64
+
+# Subir máquina virtual (pode ser necessário habilitar Hyper-v no Windows)
+$ vagrant up
+# Aqui vai baixar alguns arquivos e subir o ambiente
+
+# Verificar status
+$ vagrant status
