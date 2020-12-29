@@ -1,5 +1,8 @@
 # Configuração de Vagrant em máquina Windows
 
+# Download do VirtualBox 6.0.4
+# https://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0.4-128413-Win.exe
+
 # Download do Vagrant
 # https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.msi
 
@@ -15,3 +18,13 @@ $ vagrant up
 
 # Verificar status
 $ vagrant status
+
+# Desligar vm
+$ vagrant halt
+
+# Visualizar configurações ssh
+$ vagrant ssh-config
+
+# Conectar em porta do ssh
+$ vagrant -p 222 vagrant@127.0.0.1
+# user vagrant / senha vagrant
