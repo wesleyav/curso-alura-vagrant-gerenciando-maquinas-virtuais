@@ -28,3 +28,47 @@ $ vagrant ssh-config
 # Conectar em porta do ssh
 $ vagrant -p 222 vagrant@127.0.0.1
 # user vagrant / senha vagrant
+
+#################################################
+
+# Acessando o ubuntu (no caso), atualize os pacotes com:
+$ sudo apt-get update
+
+# Instalar o nginx
+$ sudo apt-get install -y nginx
+
+# Visualizar portas
+$ netstat -lntp
+
+# Testar o nginx via terminal:
+$ curl http://localhost
+
+# Adicionar a linha de configuração de Forward para a VM no arquivo vagrantfile:
+$ config.vm.network "forwarded_port", guest: 80, host: 8080
+
+# Reiniciar a VM com:
+$ vagrant halt
+$ vagrant up
+
+# Acessar pelo navegador o caminho do servidor Nginx:
+# localhost:8080 (inserir o ip definido no Vagrantfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
