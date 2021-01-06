@@ -78,14 +78,33 @@ $ sudo apt-get update && sudo apt-get install -y nginx
 # Alterar a linha de configuração de Forward para a VM no arquivo Vagrantfile:
 $ config.vm.network "public_network"
 
+#################################################
 
+# Criar par de chaves
+$ ssh-keygen -t rsa
 
+# Inserir o local onde será salvo a chave: 
+# Inserir senha caso necessário
 
+# Acessar VM via SSH e copiar chave para VM:
 
+# Listar arquivos em pasta compartilhada
+$ ls /vagrant/
 
+# Copiar chave 
+$ cp /vagrant/id_bionic.pub .
 
+# Imprimir o conteúdo do arquivo
+$ cat id_bionic.pub
 
+# Adicionar chave ao arquivo .ssh/authorized_keys
+$ cat id_bionic.pub >> .ssh/authorized_keys
 
+# Exibir o conteúdo de .ssh/authorized_keys
+$ cat .ssh/authorized_keys
+
+# Conectar via SSH na VM usando a chave criada e importada
+$ ssh -i id_bionic vagrant@192.168.0.7
 
 
 
