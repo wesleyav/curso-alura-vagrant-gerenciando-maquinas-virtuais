@@ -43,7 +43,7 @@ $ netstat -lntp
 # Testar o nginx via terminal:
 $ curl http://localhost
 
-# Adicionar a linha de configuração de Forward para a VM no arquivo vagrantfile:
+# Adicionar a linha de configuração de Forward para a VM no arquivo Vagrantfile:
 $ config.vm.network "forwarded_port", guest: 80, host: 8080
 
 # Reiniciar a VM com:
@@ -53,6 +53,14 @@ $ vagrant up
 # Acessar pelo navegador o caminho do servidor Nginx:
 # localhost:8080 (inserir o ip definido no Vagrantfile
 
+# Adicionar IP Estático
+# Adicionar a linha de configuração de Forward para a VM no arquivo Vagrantfile:
+$ config.vm.network "private_network", ip: "192.168.50.4"
+
+# Recarregar VM
+$ vagrant reload (nem sempre funciona)
+
+#################################################
 
 
 
