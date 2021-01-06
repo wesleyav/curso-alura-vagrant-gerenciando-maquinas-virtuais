@@ -134,3 +134,41 @@ $ cat /configs/id_bionic.pub >> .ssh/authorized_keys
 
 # Destruir VM e carregar novamente
 $ vagrant destroy -f && vagrant up
+
+#################################################
+
+# Adicionar a instalação do MySQL 5.7 ao provisionamento
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# config.vm.provision "shell",
+    inline: "apt-get update && apt-get install -y mysql-server-5.7"
+
+# Utilizar o sinal de "\" no final de cada linha de script para funcionar corretamente
+# apt-get update && \
+
+# Destruir VM e carregar novamente
+$ vagrant destroy -f && vagrant up
+
+# Testar mysql
+# Conectar na VM via SSH e no MySQ:
+$ vagrant ssh
+$ sudo mysql
+
+# Visualizar usuários do MySQL (testando se MySQL foi instalado)
+$ select user from mysql.user;
+
+# Copiar arquivo de configuração do MySQL para a pasta do projeto (No Windows)
+cat /etc/mysql/mysql.conf.d/mysql.cnf >> /configs/mysqld.cnf
+
+# Acessar o arquivo e alterar a opção:
+# bind-address		= 127.0.0.1
+# para:
+# bind-address		= 0.0.0.0
+
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# config.vm.provision "shell",
+    inline: "cat /configs/mysqld.cnf >> /etc/mysql/mysql.conf.d/mysqld.cnf"
+
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# Reiniciar o servidor mysql após alterar as configurações do mesmo
+# config.vm.provision "shell",
+    inline: "service mysql restart"
