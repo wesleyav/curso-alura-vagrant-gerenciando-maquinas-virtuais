@@ -172,3 +172,49 @@ cat /etc/mysql/mysql.conf.d/mysql.cnf >> /configs/mysqld.cnf
 # Reiniciar o servidor mysql após alterar as configurações do mesmo
 # config.vm.provision "shell",
     inline: "service mysql restart"
+
+#################################################
+
+# Adicionar máquinas múltiplas
+
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+config.vm.define "mysqldb" do |mysql|    
+    mysql.vm.network "public_network", ip: "192.168.0.7"
+
+    mysql.vm.provision "shell",
+      inline: "cat /configs/id_bionic.pub >> .ssh/authorized_keys"
+
+    mysql.vm.provision "shell",
+      inline: $script_mysql
+
+    mysql.vm.provision "shell",
+      inline: "cat /configs/mysqld.cnf > /etc/mysql/mysql.conf.d/mysqld.cnf"
+
+    mysql.vm.provision "shell",
+      inline: "service mysql restart"
+
+    mysql.vm.synced_folder "./configs/", "/configs"
+    mysql.vm.synced_folder ".", "/vagrant", disabled: true
+  end
+
+  config.vm.define "phpweb" do |phpweb|
+    phpweb.vm.network "forwarded_port", guest: 80, host: 8089
+    phpweb.vm.network "public_network", ip: "192.168.0.8"
+  end 
+
+# Foi adicionado 2 máquinas dentro do box ubuntu/bionic64
+
+# Visualizar o status exibindo todos os ambientes
+$ vagrant status
+
+# Destruir apenas phpweb
+$ vagrant destroy -f phpweb
+
+# Carregar somente mysqldb
+$ vagrant up mysqld
+
+# Carregar somente phpweb
+vagrant up phpweb
+
+# Carregar as duas VM´s (phpweb e mysqldb)
+$ vagrant up
