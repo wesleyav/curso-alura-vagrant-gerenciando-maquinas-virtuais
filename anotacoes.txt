@@ -122,3 +122,15 @@ $ vagrant list-commands
 # Executar o provision
 $ vagrant provision
 
+#################################################
+
+# Criar diretório
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# config.vm.synced_folder "./configs/", "/configs"
+
+# Adicionar chave no arquivo authorized_keys no provisionamento
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+$ cat /configs/id_bionic.pub >> .ssh/authorized_keys
+
+# Destruir VM e carregar novamente
+$ vagrant destroy -f && vagrant up

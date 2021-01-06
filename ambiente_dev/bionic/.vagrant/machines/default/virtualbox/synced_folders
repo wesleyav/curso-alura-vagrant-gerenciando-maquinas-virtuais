@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/ACELERA DEVS/75-Vagrant Gerenciando máquinas virtuais/curso-alura-vagrant-gerenciando-maquinas-virtuais/ambiente_dev/bionic","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/configs":{"guestpath":"/configs","hostpath":"C:/ACELERA DEVS/75-Vagrant Gerenciando máquinas virtuais/curso-alura-vagrant-gerenciando-maquinas-virtuais/ambiente_dev/bionic/configs","disabled":false,"__vagrantfile":true}}}
