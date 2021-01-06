@@ -106,5 +106,8 @@ $ cat .ssh/authorized_keys
 # Conectar via SSH na VM usando a chave criada e importada
 $ ssh -i id_bionic vagrant@192.168.0.7
 
+#################################################
 
+# Verificar listagem de comandos Vagrant
+$ vagrant list-commands
 
