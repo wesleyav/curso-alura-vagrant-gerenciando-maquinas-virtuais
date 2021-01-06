@@ -111,3 +111,14 @@ $ ssh -i id_bionic vagrant@192.168.0.7
 # Verificar listagem de comandos Vagrant
 $ vagrant list-commands
 
+#################################################
+
+# Provisionar
+
+# Alterar a linha de configuração de provision para a VM no arquivo Vagrantfile:
+# config.vm.provision "shell",
+    inline: "echo Hello, World"
+
+# Executar o provision
+$ vagrant provision
+
