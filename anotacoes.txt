@@ -218,3 +218,15 @@ vagrant up phpweb
 
 # Carregar as duas VM´s (phpweb e mysqldb)
 $ vagrant up
+
+#################################################
+
+# Acessar via SSH a VM phpweb e instalar o puppet
+sudo apt-get update && sudo apt-get install -y puppet
+
+# Subir as configurações via arquivo puppet
+$ sudo puppet apply /vagrant/configs/manifests/phpweb.pp
+
+# Testar dentro da phpweb
+$ netstat -ntlp
+
