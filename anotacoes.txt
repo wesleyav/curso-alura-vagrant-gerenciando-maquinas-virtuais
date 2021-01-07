@@ -230,3 +230,10 @@ $ sudo puppet apply /vagrant/configs/manifests/phpweb.pp
 # Testar dentro da phpweb
 $ netstat -ntlp
 
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+$ phpweb.vm.provision "puppet" do |puppet|
+    puppet.manifests_path = "./configs/manifests"
+    puppet.manifests_file = "phpweb.pp"
+
+# Testar alteração, destruindo e criando novamente a VM phpweb
+$ vagrant destroy -f phpweb && vagrant up phpweb
