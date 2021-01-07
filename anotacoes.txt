@@ -237,3 +237,52 @@ $ phpweb.vm.provision "puppet" do |puppet|
 
 # Testar alteração, destruindo e criando novamente a VM phpweb
 $ vagrant destroy -f phpweb && vagrant up phpweb
+
+#################################################
+
+# Criar nova VM para rodar Ansible
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# config.vm.define "ansible" do |ansible|
+    ansible.vm.network "public_network", ip: "192.168.0.13"
+    ansible.vm.provision "shell",
+      inline: "apt update && \
+               apt install -y software-properties-common && \
+               apt-add-repository --yes --update ppa:ansible/ansible && \
+               apt install ansible"   
+  end
+
+
+# Validar alteração do Vagrantfile
+$ vagrant validate
+
+# Subir VM Ansible
+$ vagrant up ansible
+
+# Acessar VM Ansible via SSH
+$ vagrant ssh ansible
+
+# Verificar versão do Ansible
+$ ansible-playbook --version
+
+# Subir mysqlserver
+$ vagrant up mysqlserver
+
+# Acessar VM mysqlserver via SSH
+$ vagrant ssh mysqlserver
+
+# Verificar chaves
+$ cat .ssh/authorized_keys
+
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# ansible.vm.provision "shell",
+      inline: "cp /vagrant/id_bionic >> /home/vagrant && \
+               chmod 600 /home/vagrant/id_bionic"
+
+# Provisionar Ansible
+$ vagrant provision ansible
+
+# Acessar VM ansible via SSH
+$ vagrant ssh ansible
+
+# Verificar arquivo copiado e permissões
+$ ls -al
