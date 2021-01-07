@@ -335,9 +335,9 @@ $ vagrant destroy -f && vagrant up
   # Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
   # config.vm.define "memcached" do |memcached|
       memcached.vm.box = "centos/7"
-      memcached.memory = 512
-      memcached.cpus = 1
-      memcached.name = "centos7_memcached"
+        vb.memory = 512
+        vb.cpus = 1
+        vb.name = "centos7_memcached"
   end
 
 # Criar vm memcached
