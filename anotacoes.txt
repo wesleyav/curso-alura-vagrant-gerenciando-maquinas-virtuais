@@ -348,3 +348,25 @@ $ vagrant box list
 
 # Remover box (vagrant box remove + nome do box)
 $ vagrant box remove hashicorp/precise64
+
+#################################################
+
+# Criar VM com docker
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+
+# config.vm.define "dockerhost" do |dockerhost|
+    dockerhost.vm.provider "virtualbox" do |vb|
+      vb.memory = 512
+      vb.cpus = 1
+      vb.name = "ubuntu_dockerhost"
+  end
+
+  dockerhost.vm.provision "shell",
+    inline: "apt-get update && apt-get install -y docker.io"
+  end
+
+# Criar VM dockerhost
+$ vagrant up dockerhost
+
+# Verificar versão
+$ sudo docker --version
