@@ -286,3 +286,17 @@ $ vagrant ssh ansible
 
 # Verificar arquivo copiado e permissões
 $ ls -al
+
+#################################################
+
+# Criar dentro da pasta configs uma pasta chamada ansible
+# Criar dois arquivos: hosts e playbook.yml
+
+# Acessar VM ansible via SSH
+$ vagrant ssh ansible
+
+# Corrigir permissão de usuário para arquivo id_bionic
+$ sudo chown vagrant:vagrant id_bionic
+
+# Executando o playbook
+$ ansible-playbook -i /vagrant/configs/ansible/hosts /vagrant/configs/ansible/playbook.yml
