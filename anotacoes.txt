@@ -300,3 +300,8 @@ $ sudo chown vagrant:vagrant id_bionic
 
 # Executando o playbook
 $ ansible-playbook -i /vagrant/configs/ansible/hosts /vagrant/configs/ansible/playbook.yml
+
+#################################################
+
+# Destroindo VM´s e recriando
+$ vagrant destroy -f && vagrant up
