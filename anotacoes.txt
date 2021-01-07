@@ -305,3 +305,20 @@ $ ansible-playbook -i /vagrant/configs/ansible/hosts /vagrant/configs/ansible/pl
 
 # Destroindo VM´s e recriando
 $ vagrant destroy -f && vagrant up
+
+#################################################
+
+# Configurar memória ram para a VM
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# config.vm.provider "virtualbox" do |vb|
+    vb.memory = 512
+    vb.cpus = 2
+  end
+
+# Configurar nome para a VM
+# Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+# config.vm.provider "virtualbox" do |vb|
+    vb.memory = 512
+    vb.cpus = 2
+    vb.name = "ubuntu_bionic_php7"
+  end
