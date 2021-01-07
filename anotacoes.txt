@@ -322,3 +322,29 @@ $ vagrant destroy -f && vagrant up
     vb.cpus = 2
     vb.name = "ubuntu_bionic_php7"
   end
+
+  #################################################
+
+  # Exibir status global (todos ambientes existentes)
+  $ vagrant global-status
+
+  # Realizar limpeza de vms não usadas
+  $ vagrant global-status --prune
+
+  # Criar nova VM com linux mais simples, básico, leve
+  # Adicionar a linha de configuração para a VM no arquivo Vagrantfile:
+  # config.vm.define "memcached" do |memcached|
+      memcached.vm.box = "centos/7"
+      memcached.memory = 512
+      memcached.cpus = 1
+      memcached.name = "centos7_memcached"
+  end
+
+# Criar vm memcached
+$ vagrant up memcached
+
+# Exibir todos os boxes 
+$ vagrant box list 
+
+# Remover box (vagrant box remove + nome do box)
+$ vagrant box remove hashicorp/precise64
